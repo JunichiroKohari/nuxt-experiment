@@ -1,0 +1,15 @@
+version: '3'
+services:
+  node:
+    # Dockerfileの場所
+    build: 
+        context: ./front
+    working_dir: /home/node/app/front/src
+    # ホストOSとコンテナ内でソースコードを共有する
+    volumes:
+      - ./front:/home/node/app/front
+    # コンテナ内部の3000を外部から5000でアクセスする
+    ports:
+      - 5000:3000
+    environment:
+      HOST: 0.0.0.0
